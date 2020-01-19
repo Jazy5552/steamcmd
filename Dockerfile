@@ -1,4 +1,4 @@
-FROM debian:stable-slim
+FROM debian:buster-slim
 MAINTAINER Jazy <jazy@jazyserver.com>
 
 RUN set -x \
@@ -9,7 +9,8 @@ RUN set -x \
   && cd /steamcmd \
   && wget -qO - 'https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz' | tar zxf - \
   && apt-get clean autoclean \
-  && apt-get autoremove -y
+  && apt-get autoremove -y \
+  && rm -rf /var/lib/apt/lists/*
 
 VOLUME /steamcmd
 
